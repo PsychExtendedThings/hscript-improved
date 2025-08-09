@@ -26,14 +26,15 @@
  * - Added Imports
  * - Added @:bypassAccessor
  */
-package hscript;
+package codenamecrew.hscript;
 
-import hscript.HEnum.HEnumValue;
+import hscript.IHScriptCustomClassBehaviour;
+import codenamecrew.hscript.HEnum.HEnumValue;
 import haxe.CallStack;
-import hscript.utils.UsingHandler;
-import hscript.utils.UnsafeReflect;
+import codenamecrew.hscript.utils.UsingHandler;
+import codenamecrew.hscript.utils.UnsafeReflect;
 import haxe.PosInfos;
-import hscript.Expr;
+import codenamecrew.hscript.Expr;
 import haxe.Constraints.IMap;
 
 using StringTools;
@@ -67,7 +68,7 @@ class RedeclaredVar {
 	public var depth:Int;
 }
 
-@:access(hscript.CustomClass)
+@:access(codenamecrew.hscript.CustomClass)
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
 class Interp {
 	private var hasScriptObject(get, never):Bool;
@@ -190,7 +191,7 @@ class Interp {
 		if (curExpr != null)
 			return cast {fileName: curExpr.origin, lineNumber: curExpr.line};
 		#end
-		return cast {fileName: "hscript", lineNumber: 0};
+		return cast {fileName: "codenamecrew.hscript", lineNumber: 0};
 	}
 
 	function initOps():Void {
@@ -1551,7 +1552,7 @@ class Interp {
 	}
 
 	// Custom Class Static Extension
-	@:access(hscript.CustomClassHandler)
+	@:access(codenamecrew.hscript.CustomClassHandler)
 	function setCustomClassUsing(name:String, cls:CustomClassHandler) {
 		if (usingHandler.entryExists(name)) return;
 

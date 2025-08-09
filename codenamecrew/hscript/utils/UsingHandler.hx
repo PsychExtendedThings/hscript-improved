@@ -1,4 +1,4 @@
-package hscript.utils;
+package codenamecrew.hscript.utils;
 
 @:structInit
 class UsingEntry  {
@@ -66,8 +66,8 @@ class UsingHandler {
 		}
 	];
 
-	@:allow(hscript.CustomClass)
-	@:allow(hscript.CustomClassHandler)
+	@:allow(codenamecrew.hscript.CustomClass)
+	@:allow(codenamecrew.hscript.CustomClassHandler)
 	public var usingEntries(default, null):Map<String, UsingEntry> = [];
 
 	public function new() {}

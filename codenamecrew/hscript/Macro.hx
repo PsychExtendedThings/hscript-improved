@@ -19,10 +19,10 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
-package hscript;
-import hscript.Expr.Error;
+package codenamecrew.hscript;
+import codenamecrew.hscript.Expr.Error;
 #if hscriptPos
-import hscript.Expr.ErrorDef;
+import codenamecrew.hscript.Expr.ErrorDef;
 #end
 import haxe.macro.Expr;
 
@@ -132,7 +132,7 @@ class Macro {
 		};
 	}
 
-	public function convert( e : hscript.Expr ) : Expr {
+	public function convert( e : codenamecrew.hscript.Expr ) : Expr {
 		return { expr : switch( #if hscriptPos e.e #else e #end ) {
 			case EConst(c):
 				EConst(switch(c) {

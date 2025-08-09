@@ -1,4 +1,4 @@
-package hscript;
+package codenamecrew.hscript;
 
 // Soon...
 interface IHScriptAbstractBehaviour extends IHScriptCustomBehaviour {

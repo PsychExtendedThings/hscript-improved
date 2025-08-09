@@ -19,8 +19,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
-package hscript;
-import hscript.Expr;
+package codenamecrew.hscript;
+import codenamecrew.hscript.Expr;
 
 using StringTools;
 
@@ -187,7 +187,7 @@ class Parser {
 			idents[identChars.charCodeAt(i)] = true;
 	}
 
-	public function parseString( s : String, ?origin : String = "hscript" ):Expr {
+	public function parseString( s : String, ?origin : String = "codenamecrew.hscript" ):Expr {
 		initParser(origin);
 		if(s == "") s = "0;"; // fixing crash with empty file
 		input = s;
@@ -1655,7 +1655,7 @@ class Parser {
 
 	// ------------------------ module -------------------------------
 
-	public function parseModule( content : String, ?origin : String = "hscript" ):Array<ModuleDecl> {
+	public function parseModule( content : String, ?origin : String = "codenamecrew.hscript" ):Array<ModuleDecl> {
 		initParser(origin);
 		input = content;
 		readPos = 0;

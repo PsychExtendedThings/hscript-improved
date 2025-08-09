@@ -1,4 +1,4 @@
-package hscript;
+package codenamecrew.hscript;
 
 /**
  * Special Interface for handling field access behaviour.

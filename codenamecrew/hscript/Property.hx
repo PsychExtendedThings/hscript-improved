@@ -1,8 +1,8 @@
-package hscript;
+package codenamecrew.hscript;
 
-import hscript.utils.UnsafeReflect;
-import hscript.Interp;
-import hscript.Expr.FieldPropertyAccess;
+import codenamecrew.hscript.utils.UnsafeReflect;
+import codenamecrew.hscript.Interp;
+import codenamecrew.hscript.Expr.FieldPropertyAccess;
 
 /**
  * Special variable that handles 'getter/setter' function calls
@@ -25,7 +25,7 @@ import hscript.Expr.FieldPropertyAccess;
  * 
  * @see https://haxe.org/manual/class-field-property.html
  */
-@:access(hscript.Interp)
+@:access(codenamecrew.hscript.Interp)
 @:structInit
 class Property {
 	public var r:Dynamic;

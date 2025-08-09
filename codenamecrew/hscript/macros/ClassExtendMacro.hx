@@ -1,6 +1,7 @@
-package hscript.macros;
+package codenamecrew.hscript.macros;
 
 #if macro
+import hscript.IHScriptCustomClassBehaviour;
 import haxe.macro.Type.ClassType;
 import Type.ValueType;
 import haxe.macro.Expr.Function;
@@ -27,7 +28,7 @@ class ClassExtendMacro {
 		#if CUSTOM_CLASSES
 		if(Context.defined("display")) return;
 		for(apply in Config.ALLOWED_CUSTOM_CLASSES) {
-			Compiler.addGlobalMetadata(apply, "@:build(hscript.macros.ClassExtendMacro.build())");
+			Compiler.addGlobalMetadata(apply, "@:build(codenamecrew.hscript.macros.ClassExtendMacro.build())");
 		}
 		//Context.onAfterTyping(buildTyped);
 		#end
@@ -60,9 +61,9 @@ class ClassExtendMacro {
 			if(key == "away3d.tools.commands.Mirror") return fields; // Error: Unknown identifier
 			if(key == "away3d.tools.commands.SphereMaker") return fields; // Error: Unknown identifier
 			if(key == "away3d.tools.commands.Weld") return fields; // Error: Unknown identifier
-			if(fkey == "hscript.CustomClassHandler.TemplateClass") return fields; // Error: Redefined
-			if(fkey == "hscript.CustomClassHandler.CustomTemplateClass") return fields; // Error: Redefined
-			if(fkey == "hscript.CustomClass") return fields; // Error: Redefined
+			if(fkey == "codenamecrew.hscript.CustomClassHandler.TemplateClass") return fields; // Error: Redefined
+			if(fkey == "codenamecrew.hscript.CustomClassHandler.CustomTemplateClass") return fields; // Error: Redefined
+			if(fkey == "codenamecrew.hscript.CustomClass") return fields; // Error: Redefined
 			if(key == "sys.thread.EventLoop") return fields; // Error: cant override force inlined
 			if(Config.DISALLOW_CUSTOM_CLASSES.contains(cl.module) || Config.DISALLOW_CUSTOM_CLASSES.contains(fkey)) return fields;
 			if(cl.module.contains("_")) return fields; // Weird issue, sorry
@@ -344,7 +345,7 @@ class ClassExtendMacro {
 			shadowClass.name = '${cl.name}$CLASS_SUFFIX';
 			var imports = Context.getLocalImports().copy();
 			Utils.setupMetas(shadowClass, imports);
-			Utils.processImport(imports, "hscript.utils.UnsafeReflect", "UnsafeReflect");
+			Utils.processImport(imports, "codenamecrew.hscript.utils.UnsafeReflect", "UnsafeReflect");
 
 			// Adding hscript getters and setters
 
@@ -358,7 +359,7 @@ class ClassExtendMacro {
 			shadowClass.fields.push({
 				name: "__interp",
 				pos: Context.currentPos(),
-				kind: FVar(macro: hscript.Interp),
+				kind: FVar(macro: codenamecrew.hscript.Interp),
 				access: [APublic]
 			});
 			/*
@@ -483,17 +484,17 @@ class ClassExtendMacro {
 					if (__interp != null) {
 						if(__class__fields.contains(name)) {
 							var v:Dynamic = __interp.variables.get(name);
-							if(v != null && v is hscript.Property) 
-								return cast(v, hscript.Property).callGetter(name);
+							if(v != null && v is codenamecrew.hscript.Property) 
+								return cast(v, codenamecrew.hscript.Property).callGetter(name);
 							return v;
 						}
 						else @:privateAccess {
-							var cls:hscript.CustomClass = cast __interp.__customClass.__upperClass;
+							var cls:codenamecrew.hscript.CustomClass = cast __interp.__customClass.__upperClass;
 							while(cls != null) {
 								if(cls.hasField(name)) 
 									return cls.getField(name);
 								
-								var prev:hscript.CustomClass = cast cls.__upperClass;
+								var prev:codenamecrew.hscript.CustomClass = cast cls.__upperClass;
 								if(prev == null)
 									break;
 								cls = prev;
@@ -508,17 +509,17 @@ class ClassExtendMacro {
 					if (__interp != null) {
 						if(__class__fields.contains(name)) {
 							var v:Dynamic = __interp.variables.get(name);
-							if(v != null && v is hscript.Property) 
-								return cast(v, hscript.Property).callGetter(name);
+							if(v != null && v is codenamecrew.hscript.Property) 
+								return cast(v, codenamecrew.hscript.Property).callGetter(name);
 							return v;
 						}
 						else @:privateAccess {
-							var cls:hscript.CustomClass = cast __interp.__customClass.__upperClass;
+							var cls:codenamecrew.hscript.CustomClass = cast __interp.__customClass.__upperClass;
 							while(cls != null) {
 								if(cls.hasField(name)) 
 									return cls.getField(name);
 								
-								var prev:hscript.CustomClass = cast cls.__upperClass;
+								var prev:codenamecrew.hscript.CustomClass = cast cls.__upperClass;
 								if(prev == null)
 									break;
 								cls = prev;
@@ -535,18 +536,18 @@ class ClassExtendMacro {
 					if (__interp != null) {
 						if(__class__fields.contains(name)) {
 							var v:Dynamic = __interp.variables.get(name);
-							if(v != null && v is hscript.Property) 
-								return cast(v, hscript.Property).callSetter(name, val);
+							if(v != null && v is codenamecrew.hscript.Property) 
+								return cast(v, codenamecrew.hscript.Property).callSetter(name, val);
 							__interp.variables.set(name, val);
 							return val;
 						}
 						else @:privateAccess {
-							var cls:hscript.CustomClass = cast __interp.__customClass.__upperClass;
+							var cls:codenamecrew.hscript.CustomClass = cast __interp.__customClass.__upperClass;
 							while(cls != null) {
 								if(cls.hasField(name)) 
 									return cls.setField(name, val);
 								
-								var prev:hscript.CustomClass = cast cls.__upperClass;
+								var prev:codenamecrew.hscript.CustomClass = cast cls.__upperClass;
 								if(prev == null)
 									break;
 								cls = prev;
@@ -565,18 +566,18 @@ class ClassExtendMacro {
 					if (__interp != null) {
 						if(__class__fields.contains(name)) {
 							var v:Dynamic = __interp.variables.get(name);
-							if(v != null && v is hscript.Property) 
-								return cast(v, hscript.Property).callSetter(name, val);
+							if(v != null && v is codenamecrew.hscript.Property) 
+								return cast(v, codenamecrew.hscript.Property).callSetter(name, val);
 							__interp.variables.set(name, val);
 							return val;
 						}
 						else @:privateAccess {
-							var cls:hscript.CustomClass = cast __interp.__customClass.__upperClass;
+							var cls:codenamecrew.hscript.CustomClass = cast __interp.__customClass.__upperClass;
 							while(cls != null) {
 								if(cls.hasField(name)) 
 									return cls.setField(name, val);
 								
-								var prev:hscript.CustomClass = cast cls.__upperClass;
+								var prev:codenamecrew.hscript.CustomClass = cast cls.__upperClass;
 								if(prev == null)
 									break;
 								cls = prev;

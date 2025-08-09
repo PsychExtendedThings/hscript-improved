@@ -1,5 +1,8 @@
 package hscript;
 
+import codenamecrew.hscript.IHScriptCustomAccessBehaviour;
+import codenamecrew.hscript.Interp;
+
 /**
  * Special Interface to make a class usable for Custom Classes.
  */

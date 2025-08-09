@@ -1,4 +1,4 @@
-package hscript;
+package codenamecrew.hscript;
 
 class Config {
 	// Runs support for custom classes in these

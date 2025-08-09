@@ -1,4 +1,4 @@
-package hscript.macros;
+package codenamecrew.hscript.macros;
 
 #if macro
 import Type.ValueType;
@@ -15,7 +15,7 @@ class AbstractHandler {
 		#if !display
 		if(Context.defined("display")) return;
 		for(apply in Config.ALLOWED_ABSTRACT_AND_ENUM) {
-			Compiler.addGlobalMetadata(apply, '@:build(hscript.macros.AbstractHandler.build())');
+			Compiler.addGlobalMetadata(apply, '@:build(codenamecrew.hscript.macros.AbstractHandler.build())');
 		}
 		#end
 	}

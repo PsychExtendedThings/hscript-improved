@@ -1,4 +1,4 @@
-package hscript;
+package codenamecrew.hscript;
 
 /**
  * Same Interface as IHScriptCustomBehaviour but for Property.

@@ -1,4 +1,4 @@
-package hscript;
+package codenamecrew.hscript;
 
 /**
  * Special Interface for handling new instances of an object.

@@ -1,6 +1,6 @@
-package hscript;
+package codenamecrew.hscript;
 
-import hscript.utils.UnsafeReflect;
+import codenamecrew.hscript.utils.UnsafeReflect;
 
 // TODO: EnumTools for scripted enums
 /**

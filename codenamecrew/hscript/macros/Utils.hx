@@ -1,4 +1,4 @@
-package hscript.macros;
+package codenamecrew.hscript.macros;
 
 #if macro
 import haxe.macro.Type.ClassType;

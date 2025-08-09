@@ -1,9 +1,9 @@
-package hscript;
+package codenamecrew.hscript;
 
 /**
  * Provides handlers for static custom class fields and instantiation.
  */
-@:access(hscript.Property)
+@:access(codenamecrew.hscript.Property)
 class CustomClassHandler implements IHScriptCustomConstructor implements IHScriptCustomAccessBehaviour{
 	public var ogInterp:Interp;
 	public var name:String;
@@ -44,7 +44,7 @@ class CustomClassHandler implements IHScriptCustomConstructor implements IHScrip
 		initStatic();
 	}
 
-	@:access(hscript.Interp)
+	@:access(codenamecrew.hscript.Interp)
 	function initStatic() {
 		__interp = new Interp();
 		__interp.errorHandler = ogInterp.errorHandler;
@@ -87,7 +87,7 @@ class CustomClassHandler implements IHScriptCustomConstructor implements IHScrip
 	public function hnew(args:Array<Dynamic>):Dynamic 
 		return new CustomClass(this, args);
 
-	@:allow(hscript.Interp)
+	@:allow(codenamecrew.hscript.Interp)
 	function hasField(name:String) {
         return __staticFields.contains(name);
     }
